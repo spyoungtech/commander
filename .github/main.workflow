@@ -1,6 +1,6 @@
 workflow "New workflow" {
-  on = "push"
   resolves = ["Mirror Action"]
+  on = "push"
 }
 
 action "Mirror Action" {
