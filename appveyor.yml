@@ -15,8 +15,7 @@ artifacts:
   name: win_x64
 
 deploy:
-  release: voice-commander-v$(appveyor_build_version)
-  description: 'Release description'
+  description: 'Voice commander $(APPVEYOR_REPO_TAG_NAME)'
   provider: GitHub
   auth_token:
     secure: I6JFX/OVIVm1JAKgl4tevW6Q1C2JVKblEVKKS5Bq5dnTDRQ1lxyeHrlfn0OxrGuH
