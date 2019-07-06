@@ -1,12 +1,12 @@
-workflow "New workflow" {
-  resolves = ["Mirror Action"]
+workflow "Mirror Workflow" {
   on = "push"
+  resolves = ["Mirror Action"]
 }
 
 action "Mirror Action" {
-  uses = "./"
+  uses = "spyoungtech/mirror-action@master"
   secrets = ["GIT_PASSWORD"]
-  args = "https://gitlab.com/spyoungtech/mirror-action.git"
+  args = "https://gitlab.com/spyoungtech/voice-commander.git"
   env = {
     GIT_USERNAME = "spyoungtech"
   }
