@@ -1,0 +1,28 @@
+version: 0.0.{build}
+init:
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+environment:
+  PYTHONEXE: C:\Python36-x64\python.exe
+
+install:
+- cmd: >-
+    %PYTHONEXE% -m pip install --upgrade -r requirements.txt
+
+build_script:
+- cmd: C:\Python36-x64\Scripts\pyinstaller.exe -F -w voice_commander\__main__.py
+artifacts:
+- path: dist\__main__.exe
+  name: win_x64
+
+deploy:
+  release: voice-commander-v$(appveyor_build_version)
+  description: 'Release description'
+  provider: GitHub
+  auth_token:
+    secure: I6JFX/OVIVm1JAKgl4tevW6Q1C2JVKblEVKKS5Bq5dnTDRQ1lxyeHrlfn0OxrGuH
+  artifact: win_x64
+  draft: false
+  prerelease: true
+  on:
+    branch: master                 # release from master branch only
+    APPVEYOR_REPO_TAG: true        # deploy on tag push only
