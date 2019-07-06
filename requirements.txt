@@ -1,0 +1,5 @@
+fuzzywuzzy
+keyboard
+easygui
+pyaudio
+SpeechRecognition
